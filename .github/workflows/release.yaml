@@ -1,4 +1,5 @@
-name: Build image for tag ${{ inputs.target_tag }}
+run-name: Build image for tag ${{ inputs.target_tag }}
+name: Build image from upstream
 
 on:
   workflow_dispatch:
