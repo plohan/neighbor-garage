@@ -43,7 +43,7 @@ jobs:
               export TAGS="$COMMIT_SHA"
           esac
 
-          echo "tags=$TAGS" >> "$GITHUB_ENV"
+          echo "tags=$TAGS" >> "$GITHUB_OUTPUT"
 
           echo "tags=$TAGS"
           echo "IMAGE_NAME=$IMAGE_NAME"
