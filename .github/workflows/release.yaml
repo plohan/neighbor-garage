@@ -12,8 +12,11 @@ jobs:
       packages: write
 
     steps:
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+        uses: docker/setup-buildx-action@v3
 
       - name: Log in to the Container Registry
         uses: docker/login-action@v2
@@ -40,9 +43,12 @@ jobs:
               export TAGS="$COMMIT_SHA"
           esac
 
+          echo "tag=$TAGS" >> "$GITHUB_ENV"
+
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v3
         with:
+          platforms: linux/amd64,linux/arm64
           context: https://github.com/deuxfleurs-org/garage.git
           file: Dockerfile
           push: true
