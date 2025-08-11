@@ -38,5 +38,10 @@ ENV RUST_LOG=garage=info
 RUN mkdir -p /opt/garage
 
 COPY --from=builder /tmp/build/result/bin/garage /opt/garage
+COPY ./volumes/garage/docker-entrypoint.d /docker-entrypoint.d
+COPY ./volumes/garage/config/garage.toml.tmpl /opt/garage/garage.toml.tmpl
 
-CMD [ "/garage", "server"]
+ENTRYPOINT [ "/docker-entrypoint.d/start.sh" ]
+
+CMD [ "garage", "server"]
+

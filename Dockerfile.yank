@@ -1,0 +1,17 @@
+FROM dxflrs/garage:v2.0.0 AS upstream
+
+FROM debian:12.11-slim AS runner
+
+ENV RUST_BACKTRACE=1
+ENV RUST_LOG=garage=info
+ENV PATH="$PATH:/opt/garage"
+
+RUN mkdir -p /opt/garage
+
+COPY --from=upstream /garage /opt/garage
+COPY ./volumes/garage/docker-entrypoint.d /docker-entrypoint.d
+COPY ./volumes/garage/config/garage.toml.tmpl /opt/garage/garage.toml.tmpl
+
+ENTRYPOINT [ "/docker-entrypoint.d/start.sh" ]
+
+CMD [ "garage", "server"]
