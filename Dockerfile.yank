@@ -1,4 +1,6 @@
-FROM dxflrs/garage:v2.0.0 AS upstream
+ARG GARAGE_UPSTREAM_VERSION=v2.0.0
+
+FROM dxflrs/garage:${GARAGE_UPSTREAM_VERSION} AS upstream
 
 FROM debian:12.11-slim AS runner
 
