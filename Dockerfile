@@ -2,7 +2,7 @@ FROM nixos/nix:latest AS builder
 
 ARG TARGETPLATFORM
 
-COPY . /tmp/build
+COPY --from=upstream . /tmp/build
 WORKDIR /tmp/build
 
 RUN \
