@@ -1,6 +1,8 @@
 services:
   garage:
-    image: g
+    build:
+      context: .
+      dockerfile: Dockerfile.yank
     init: true
     environment:
       - GARAGE_BUCKET_NAME=test-bucket-name
