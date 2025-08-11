@@ -56,7 +56,7 @@ jobs:
           echo "tags=$TAGS"
           echo "IMAGE_NAME=$IMAGE_NAME"
           echo "HOME=$HOME"
-          ehho "full-tags=$IMAGE_NAME:$TAGS"
+          echo "full-tags=$IMAGE_NAME:$TAGS"
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v3
