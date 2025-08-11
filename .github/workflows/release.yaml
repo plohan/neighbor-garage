@@ -43,7 +43,7 @@ jobs:
               export TAGS="$COMMIT_SHA"
           esac
 
-          echo "tag=$TAGS" >> "$GITHUB_ENV"
+          echo "tags=$TAGS" >> "$GITHUB_ENV"
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v3
