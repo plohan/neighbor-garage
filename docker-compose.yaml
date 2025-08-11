@@ -1,13 +1,14 @@
 services:
   garage:
+    init: true
     build:
       context: .
       dockerfile: Dockerfile.yank
-    init: true
     environment:
       - GARAGE_BUCKET_NAME=test-bucket-name
       - GARAGE_KEY_ID=GKdd7c36fa3353258bd5a86304
       - GARAGE_KEY_SECRET=03bee365ad0fa11c8e3438566b7afecf423aa4a59dd9069c42ce35b772094bf0
+      - GARAGE_REGION=garage
     ports:
       - 3900-3904:3900-3904
     volumes:
