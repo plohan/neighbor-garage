@@ -37,7 +37,7 @@ jobs:
         id: metadata-gather
         env:
           REPOSITORY: ${{ github.repository }}
-          TARGET_TAG: ${{ github.events.input.target_rev }}
+          TARGET_TAG: ${{ github.events.input.target_tag }}
         run: |
           export "IMAGE_NAME=ghcr.io/${REPOSITORY@L}"
           echo "IMAGE_NAME=$IMAGE_NAME" >> "$GITHUB_ENV"
