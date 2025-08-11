@@ -25,7 +25,7 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ github.token }}
 
-      - name: Repository to lowercase
+      - name: Gather image tag and name
         id: metadata-gather
         env:
           REPOSITORY: ${{ github.repository }}
@@ -44,6 +44,9 @@ jobs:
           esac
 
           echo "tags=$TAGS" >> "$GITHUB_ENV"
+
+          echo "tags=$TAGS"
+          echo "IMAGE_NAME=$IMAGE_NAME"
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v3
