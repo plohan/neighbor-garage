@@ -51,10 +51,12 @@ jobs:
           esac
 
           echo "tags=$TAGS" >> "$GITHUB_OUTPUT"
+          ehho "full-tags=$IMAGE_NAME:$TAGS" >> "$GITHUB_OUTPUT"
 
           echo "tags=$TAGS"
           echo "IMAGE_NAME=$IMAGE_NAME"
           echo "HOME=$HOME"
+          ehho "full-tags=$IMAGE_NAME:$TAGS"
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v3
@@ -65,6 +67,6 @@ jobs:
           # file: Dockerfile.build
           # build-contexts: upstream=https://github.com/deuxfleurs-org/garage.git
           push: true
-          tags: ${{ steps.metadata-gather.outputs.tags }}
+          tags: ${{ steps.metadata-gather.outputs.full-tags }}
           cache-from: type=registry,ref=${{ env.IMAGE_NAME }}:buildcache
           cache-to: type=registry,ref=${{ env.IMAGE_NAME }}:buildcache,mode=max
