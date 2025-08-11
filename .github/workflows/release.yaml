@@ -51,7 +51,7 @@ jobs:
           esac
 
           echo "tags=$TAGS" >> "$GITHUB_OUTPUT"
-          ehho "full-tags=$IMAGE_NAME:$TAGS" >> "$GITHUB_OUTPUT"
+          echo "full-tags=$IMAGE_NAME:$TAGS" >> "$GITHUB_OUTPUT"
 
           echo "tags=$TAGS"
           echo "IMAGE_NAME=$IMAGE_NAME"
