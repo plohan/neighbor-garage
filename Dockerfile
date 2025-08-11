@@ -1,4 +1,4 @@
-FROM nixos/nix:25.05 AS builder
+FROM nixos/nix:latest AS builder
 
 ARG TARGETPLATFORM
 
