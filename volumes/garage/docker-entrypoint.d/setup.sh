@@ -1,6 +1,8 @@
 echo "Waiting for service to be healthy"
 sleep 2
+
 NODE_ID=$(garage status | tail -1 | cut -f1 -d' ')
+GARAGE_BUCKET_NAME=${GARAGE_BUCKET_NAME:-local}
 
 garage layout assign -z dc1 -c "${GARAGE_CAPACITY:-1G}" "$NODE_ID"
 
